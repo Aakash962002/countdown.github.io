@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Frontend Mentor | Launch countdown timer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="./flip/flip.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap" rel="stylesheet">
+
+
+<style>
+   
+     body
+     {
+         background:hsl(234, 17%, 12%);
+         overflow-x: hidden;
+     }   
+     .starimg
+     {
+         position: absolute;
+         
+     }
+     .hillsimg
+     {
+         position: absolute;
+         top:26.7em;
+         overflow-y: hidden;
+     }
+     .tag
+     {
+         position: absolute;
+         color: white;
+         top:6em;
+         left:18em;
+         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+         text-transform: uppercase;
+         letter-spacing: 5px;
+         font-size: 25px;
+     }
+    .media
+    {
+        position: absolute;
+        top:30em;
+        left:35em;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        color:hsl(237, 18%, 59%);
+    }
+    .media li
+    {
+        padding: 12px;
+        font-size: 25px;
+    }
+    .media li:hover
+    {
+        color:hsl(345, 95%, 68%);
+    }
+    .creator
+    {
+        position: absolute;
+        color:hsl(237, 18%, 59%);
+        top:46em;
+        text-transform: uppercase;
+        left:45em;
+        font-size: small;
+    }
+    .creator a
+    {
+        color:hsl(237, 18%, 59%);
+    }
+    .tick {
+        position:relative;
+        top:15em;
+        width:40em;
+        left:20em;
+        padding-bottom: 1em;
+        font-size:1rem;
+        font-family:red-hate;
+    }
+    
+    .tick-label {
+        font-size:.375em;
+        text-align:center;
+        color:hsl(237, 18%, 59%);
+    }
+
+    .tick-group {
+        margin:0 .25em;
+        text-align:center;
+        
+    }
+</style>
+
+</head>
+<body>
+
+<!-- START OF FLIP EXAMPLE PRESET -->
+
+<img src="../images/bg-stars.svg" class="starimg">
+<img src="../images/pattern-hills.svg" class="hillsimg">
+<label class="tag">we're launching soon</label>
+<div class="tick"
+     data-did-init="handleTickInit">
+
+    <div data-repeat="true"
+         data-layout="horizontal center fit"
+         data-transform="preset(d, h, m, s) -> delay">
+
+        <div class="tick-group">
+
+            <div data-key="value"
+                 data-repeat="true"
+                 data-transform="pad(00) -> split -> delay">
+
+                <span data-view="flip"></span>
+
+            </div>
+
+            <span data-key="label"
+                  data-view="text"
+                  class="tick-label"></span>
+
+        </div>
+
+    </div>
+
+</div>
+<ul class="media">
+    <li><i class="fa fa-facebook-official" aria-hidden="true"></i></li>
+    <li><i class="fa fa-pinterest" aria-hidden="true"></i></li>
+    <li><i class="fa fa-instagram" aria-hidden="true"></i></li>
+</ul>
+<label class="creator">created by <a href="https://www.instagram.com/_aakash_b962002_/?igshid=16ng2qluzdl1r">AAKASH BASNAL</a></label>
+<script>
+	function handleTickInit(tick) {
+
+       
+        var locale = {
+            
+            SECOND_SINGULAR: 'Seconde',
+           
+        };
+
+        for (var key in locale) {
+            if (!locale.hasOwnProperty(key)) { continue; }
+            tick.setConstant(key, locale[key]);
+        }
+        
+
+        var nextYear = (new Date()).getFullYear() + 1;
+        
+		Tick.count.down(nextYear + '-01-01').onupdate = function(value) {
+			tick.value = value;
+        };
+
+	}
+</script>
+
+<!-- END OF FLIP EXAMPLE PRESET -->
+
+<script src="./flip/flip.min.js"></script>
+
+</body>
+</html>
